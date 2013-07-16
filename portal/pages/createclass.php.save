@@ -1,0 +1,28 @@
+<?php
+
+
+$classid = 'NULL';
+$clage = $_POST['clage'];
+$clname = $_POST['classname'];
+$clprgm = $_POST['classprgm'];
+$cllevel = $_POST['level'];
+$clinst = $_POST['classinst'];
+$clseats = $_POST['classmax'];
+$cldscptn = $_POST['classdscptn'];
+
+if ($_POST['makeclass'] == "create") {
+
+$stmt = $mysqli->prepare("INSERT INTO classes (`clss-age`, `clss-name`, `clss-prgm`, `clss-lvl`, `clss-inst`, `clss-seats`, `clss-dscptn`) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param('sssisis', $clage, $clname, $clprgm, $cllevel, $clinst, $clseats, $cldscptn);
+if (!$stmt->execute()) {
+echo "<div class='alert alert-success'>
+An error occurred. Please check your data and try again. If you believe you are receiving this message in error, please contact technical support.<";
+include('templates/classform.php');
+} else {
+echo "Class created. Click here to make changes, view, or delete this class.";
+include('templates/classform.php');
+
+}
+} else { include('templates/classform.php');
+}
+?>

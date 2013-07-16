@@ -1,0 +1,46 @@
+
+<?php 
+//Set the title of the page
+$pagetitle = "View Classes";
+
+//Content
+
+
+echo "<legend>All Classes</legend>";
+echo "<div class='span10'>";
+$stmt=$mysqli->query("SELECT * FROM classes");
+while ($r=$stmt->fetch_assoc()) {
+echo "<div class='span3 well'>";
+echo "<h4>" .$r['clss-name']. " - Level " .$r['clss-lvl'];
+echo "</h4><p>";
+echo "Instructor: " .$r["clss-inst"]. "<br>";
+echo "Program: " .$r["clss-prgm"]. "<br>";
+echo "Class Level: " .$r["clss-lvl"]. "<br>";
+//echo "Description: " .$r["clss-dscptn"]. "<br>";
+echo "Seats Available: " .$r["clss-seats"]. "<br>";
+echo "</p><p><a class='btn' href='?action=classdetails&class=" .$r['clss-id']. "'>View details &raquo;</a></p></div>";
+
+}
+echo "</div>";
+?>
+
+<div class="span2">
+<h2>Sort <i class="icon-arrow-down"></i></h2>
+<ul class="nav nav-list">
+                                    <li class="nav-header">Program</li>
+				<li>Classical Ballet, Pointe, Partnering, Tap, Stretch and Conditioning, Horton and Graham  Techniques, Jazz, tumbling, Hip-Hop, Men’s Studies and West -African.
+					<li><a href="#">Dance</a></li>
+                                    <li><a href="#">Acting</a></li>
+                                    <li><a href="#">Musical Theater</a></li>
+					<li class="divider"></li>
+                                    <li class="nav-header">Instructor</li>
+                                    <li><a href="#">Kezia Rolle</a></li>
+                                    <li><a href="#">DeWitt Cooper</a></li>
+                                    <li class="divider"></li>
+                                    <li class="nav-header">Dates</li>
+                                    <li><a href="#">This Week</a></li>
+                                    <li><a href="#">This Month</a></li>
+                                    <li><a href="#">Next Week</a></li>
+                                    <li><a href="#">Next Month</a></li>
+                                </ul>
+</div>
